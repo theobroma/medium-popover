@@ -1,0 +1,76 @@
+.selectable-text {
+	  font-family: medium-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
+    letter-spacing: .01rem;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 21px;
+    line-height: 2;
+    display: inline;
+	p{
+		margin-top: 29px;
+	}
+}
+.is-highlight{
+	background-color: rgba(222, 250, 211, 1) !important;
+	line-height: 1.58;
+	transition: .2s background-color;
+}
+
+//comments
+.comment{
+	&-title{
+		font-size: 14px;
+    color: rgba(0,0,0,.6);
+    font-weight: 600;
+	}
+	&-item{
+		display:flex;
+		flex-flow: column wrap;
+		background: #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    border: 1px solid rgba(0,0,0,.09);
+    border-radius: 3px;
+	}
+	&-author{
+		color: #3E8432;
+		font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+    letter-spacing: 0;
+    font-weight: 700;
+    font-style: normal;
+	}
+	&-item{
+		padding: 15px 20px;
+	}
+	&-header{
+		margin-bottom: 10px;
+	}
+	&-excerption{
+		border-radius: 3px;
+		box-shadow: 0 1px 4px rgba(0,0,0,.04);
+		border: 1px solid rgba(0,0,0,.09);
+		margin-bottom: 20px;
+		letter-spacing: .01rem;
+    font-weight: 400;
+    font-style: normal;
+    display: inline;
+    font-size: 16px;
+    line-height: 1.4;
+    background-color: rgba(39,243,106,.1);
+    color: rgba(0,0,0,.8);
+	}
+	&-content {
+		font-size: 18px;
+    line-height: 1.58;
+	}
+}
+
+.response {
+	&-form {
+		background: #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    border: 1px solid rgba(0,0,0,.09);
+    border-radius: 3px;
+    margin-top: 5px;
+    padding: 5px 20px 0 20px;
+	}
+}
