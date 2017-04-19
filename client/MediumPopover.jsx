@@ -1,11 +1,14 @@
 // ES6 Class Syntax
 import React, { Component } from 'react'
 import onClickOutside from 'react-onclickoutside'
+import { connect } from 'react-redux'
+import ContentEditable from "react-contenteditable"
+import { onGetSelection } from './actions/mediumActions';
 import SelectionPopover from './SelectionPopover'
 import MediumComments from './MediumComments'
 import ResponseForm from './ResponseForm'
 
-export default class MediumPopover extends React.Component {
+class MediumPopover extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -17,7 +20,7 @@ export default class MediumPopover extends React.Component {
   }
   getSelection () {
     const selectionText = window.getSelection().toString();
-    this.setState({ selection: selectionText });
+    this.props.onGetSelection(selectionText)
   }
 
   render() {
@@ -79,3 +82,12 @@ export default class MediumPopover extends React.Component {
     )
   }
 }
+
+
+function mapStateToProps(state) {
+  return {
+    medium: state.medium
+  };
+}
+
+export default connect(mapStateToProps,{onGetSelection})(MediumPopover);

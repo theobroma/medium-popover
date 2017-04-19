@@ -9,4 +9,17 @@ router.get('/', (req, res) => {
   });
 });
 
+router.post('/', (req, res) => {
+      const { username, selection, response } = req.body;
+      const newComment = new Comment({
+        username:username,
+        content:response,
+        excerption:selection
+      });
+      newComment.save()
+        .then(() => res.json({ success: true }))
+        .catch(err => res.status(500).json({ error: err }));
+
+});
+
 export default router;
