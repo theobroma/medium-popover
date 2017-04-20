@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ContentEditable from "react-contenteditable"
 import api from './api'
-import { onResponseChange } from './actions/mediumActions'
+import { onResponseChange,clearCommentData,onPublish } from './actions/mediumActions'
 
 class ResponseForm extends Component {
   constructor(props) {
@@ -13,30 +13,46 @@ class ResponseForm extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handlePublish = this.handlePublish.bind(this);
   }
+
+  componentDidMount() {
+    if (this.props.autoFocus) {
+      this.contentEditable.findDOMNode().focus();
+    }
+  }
   handleChange(evt){
-    this.setState({html: evt.target.value});
     this.props.onResponseChange(evt.target.value);
   }
 
-  handlePublish(evt){
-    api.publishComment(this.props.medium);
+  handlePublish(){
+    /*api.publishComment(this.props.medium);*/ //need rewrite usin Redux
+    this.props.onPublishUI();
+    this.props.onPublish(this.props.medium);
+    this.props.clearCommentData();
+
   }
   render () {
     return (
-      <div>
-        <pre>{JSON.stringify(this.props, '', 4)}</pre>
-        <ContentEditable
-        className="response-form"
-        html={this.props.medium.response} // innerHTML of the editable div
-        disabled={false}       // use true to disable edition
-        onChange={this.handleChange} // handle innerHTML change
-        />
-        <a className="button is-primary" onClick={this.handlePublish}>Publish</a>
+      <div className="response-form-inner">
+        {/*<pre>{JSON.stringify(this.props, '', 4)}</pre>*/}
+        <div className="response-form-top">
+          <div className="response-form-header">
+            Responses
+          </div>
+          <ContentEditable
+          ref={(c) => this.contentEditable = c}
+          className="response-form-input"
+          html={this.props.medium.response} // innerHTML of the editable div
+          disabled={false}       // use true to disable edition
+          onChange={this.handleChange} // handle innerHTML change
+          />
+        </div>
+        <div className="response-form-footer">
+          <a className="button is-primary" onClick={this.handlePublish}>Publish</a>
+        </div>
       </div>
     );
   }
 }
-
 
 function mapStateToProps(state) {
   return {
@@ -44,4 +60,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps,{onResponseChange})(ResponseForm);
+export default connect(mapStateToProps,{onResponseChange,clearCommentData,onPublish})(ResponseForm);

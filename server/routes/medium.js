@@ -17,9 +17,15 @@ router.post('/', (req, res) => {
         excerption:selection
       });
       newComment.save()
-        .then(() => res.json({ success: true }))
+        .then((data) => res.json({ success: true,data }))
         .catch(err => res.status(500).json({ error: err }));
 
+});
+
+router.delete('/', (req, res) => {
+  Comment.remove()
+    .then(() => res.json({ success: true }))
+    .catch(err => res.status(500).json({ error: err }));
 });
 
 export default router;

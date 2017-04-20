@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import onClickOutside from 'react-onclickoutside'
 import { connect } from 'react-redux'
 import ContentEditable from "react-contenteditable"
+import classnames from 'classnames'
 import { onGetSelection } from './actions/mediumActions';
 import SelectionPopover from './SelectionPopover'
 import MediumComments from './MediumComments'
@@ -13,21 +14,29 @@ class MediumPopover extends React.Component {
     super();
     this.state = {
       showPopover: false,
-      showCommentForm:false,
-      selection:""
+      showCommentForm:false
     };
     this.getSelection = this.getSelection.bind(this);
+    this.onPublishUI = this.onPublishUI.bind(this);
   }
   getSelection () {
     const selectionText = window.getSelection().toString();
     this.props.onGetSelection(selectionText)
+    this.setState({ showCommentForm: true });
+  }
+
+  onPublishUI(){
+     this.setState({ showCommentForm: false });
   }
 
   render() {
+    const { showCommentForm, showPopover } = this.state;
     return (
       <div>
         <section className="section">
-          <ResponseForm />
+        {/*<div className={classnames('response-form-wrap', { 'is-hide': !this.state.showCommentForm })} >
+            <ResponseForm onPublishUI={this.onPublishUI}/>
+          </div>*/}
           <div className="container">
             <div className="columns is-multiline">
               <div data-selectable className="selectable-text column is-12">
@@ -66,14 +75,18 @@ class MediumPopover extends React.Component {
                 </p>
               </div>
               <SelectionPopover
-                showPopover={this.state.showPopover}
+                showPopover={showPopover}
                 onSelect={() => {this.setState({showPopover: true})}}
                 onDeselect={() => {this.setState({showPopover: false})}}
               >
                 <button>mark</button>
                 <button onClick={this.getSelection}>comment</button>
               </SelectionPopover>
-
+              { showCommentForm &&
+                <div className="response-form-wrap">
+                  <ResponseForm onPublishUI={this.onPublishUI}/>
+                </div>
+              }
             </div>
           </div>
         </section>

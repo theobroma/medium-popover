@@ -19,20 +19,20 @@ import setAuthorizationToken from './utils/setAuthorizationToken';
 import { setCurrentUser } from './actions/authActions';
 import './sass/main.scss';
 
-import rootSaga from './sagas/index';
-const sagaMiddleware = createSagaMiddleware();
+/*import rootSaga from './sagas/index';*/
+/*const sagaMiddleware = createSagaMiddleware();*/
 
 const logger = createLogger();
 
 const store = createStore(
   rootReducer,
   compose(
-    applyMiddleware(thunk, promise, logger, sagaMiddleware),
+    applyMiddleware(thunk, promise, logger),
     window.devToolsExtension ? window.devToolsExtension() : f => f
   )
 );
 
-sagaMiddleware.run(rootSaga);
+/*sagaMiddleware.run(rootSaga);*/
 
 /* store.subscribe(() => {
   console.log('Store changed', store.getState());

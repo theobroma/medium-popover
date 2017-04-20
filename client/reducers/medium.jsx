@@ -1,4 +1,4 @@
-import { SET_RESPONSE, SET_SELECTION, FETCHING_DATA, FETCHING_DATA_SUCCESS, FETCHING_DATA_FAILURE } from '../actions/types';
+import { SET_RESPONSE, SET_SELECTION, CLEAR_DATA,ADD_COMMENT, FETCHING_DATA, FETCHING_DATA_SUCCESS, FETCHING_DATA_FAILURE } from '../actions/types';
 const initialState = {
   username: "John Doe",
   response: "",
@@ -20,11 +20,11 @@ export default function medium (state = initialState, action) {
         ...state,
         selection: action.selection
       }
-    case FETCHING_DATA_FAILURE:
+    case CLEAR_DATA:
       return {
         ...state,
-        isFetching: false,
-        error: true
+        response: "",
+        selection: "",
       }
     default:
       return state
