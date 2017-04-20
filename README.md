@@ -1,37 +1,11 @@
-### Getting Started
-1. Clone this repository.
-2. Run `npm install`.
-3. Change config parameters:
-  * Enter `etc` directory.
-  * Create file 'config.json'.
-  * Copy content from 'config.json.sample'.
-  * Change 'config.json' to fit your needs.
-4. Fill up database with data `npm run seed`. MongoDB installation is required.
-5. Run server : `npm run server`.
-4. Run webpack in development mode : `npm run devpack`.
-5. Visit `localhost:8080` in your browser
+[Демо](https://medium-popover.herokuapp.com/medium)
+Не закончено!!!
 
-### Heroku
-1. Run `npm run build` to compile files.
-2. Push them to heroku.
-
-### Getting Started
-1. Clone this repository.
-2. Run `npm install`.
-3. Change config parameters:
-  1. Enter `etc` directory.
-  2. Create file 'config.json'.
-  3. Copy content from 'config.json.sample'.
-  4. Change 'config.json' to fit your needs.
-4. Fill up database with data `npm run seed`. MongoDB installation is required.
-5. Run server : `npm run server`.
-4. Run webpack in development mode use: `npm run devpack`.
-5. Visit `localhost:8080` in your browser
-
-## REST API
-
-| HTTP Method | URL           | Action                       |
-| ------------|:-------------:| ----------------------------:|
-| GET         | /api/books    | Retrieve all books           |
-| GET         | /api/authors  | Retrieve all authors         |
-| GET         | /api/genres   | Retrieve all genres          |
+### Goal
++ Build a medium.com style commenting / notes system
++ People can mark text and attach a comment to it
++ You can assume that the editor will not change the text afterwards
++ Make it work for a single user and a static text (no signup / login needed)
++ Please use a REST-API to manage storage in a DB
++ We prefer NodeJS, React, Redux
++ please try your best to make it look good (e.g styling and transitions)
