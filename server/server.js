@@ -5,16 +5,7 @@ import bodyParser from 'body-parser';
 import favicon from 'serve-favicon';
 import mongoose from 'mongoose';
 import morgan from 'morgan';
-import decodedId from './middlewares/decodedId';
 // server routes
-import books from './routes/books';
-import genres from './routes/genres';
-import users from './routes/users';
-import authors from './routes/authors';
-import auth from './routes/auth';
-import profile from './routes/profile';
-import cart from './routes/cart';
-import log from './routes/log';
 import config from '../etc/config.json';
 
 import medium from './routes/medium';
@@ -32,7 +23,6 @@ mongoose.connect(mongoUri, (error) => {
   else console.log('mongo connected');
 });
 
-app.use(decodedId);
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -41,14 +31,6 @@ app.use(favicon(path.join(__dirname, 'public','build','favicon.png')));
 app.use(express.static(path.join(__dirname, 'public', 'build')));
 
 // All routes in the end
-app.use('/api/books', books);
-app.use('/api/genres', genres);
-app.use('/api/users', users);
-app.use('/api/authors', authors);
-app.use('/api/auth', auth);
-app.use('/api/profile', profile);
-app.use('/api/cart', cart);
-app.use('/api/log', log);
 app.use('/api/medium', medium);
 
 // Redirect all non api requests to the index

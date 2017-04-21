@@ -1,5 +1,4 @@
 [Демо](https://medium-popover.herokuapp.com/medium)
-Не закончено!!!
 
 ### Goal
 + Build a medium.com style commenting / notes system

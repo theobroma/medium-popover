@@ -57,6 +57,7 @@ class SelectionPopover extends Component {
 
     return (
       <div
+        className="buttonSet"
         ref="selectionPopover"
         style={{
           visibility,
@@ -112,7 +113,7 @@ SelectionPopover.propTypes = {
 }
 
 SelectionPopover.defaultProps = {
-  topOffset: 30
+  topOffset: 105
 }
 
 export default onClickOutside(SelectionPopover)

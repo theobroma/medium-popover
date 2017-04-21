@@ -16,7 +16,7 @@
 	transition: .2s background-color;
 }
 .response-form-wrap {
-	position: absolute;
+	position: fixed;
 	top: 30%;
 	right: 0;
 	z-index:9999;
@@ -32,14 +32,16 @@
 		}
     &-input{
     	background: #fff;
-	    box-shadow: 0 1px 4px rgba(0,0,0,.04);
-	    border: 1px solid rgba(0,0,0,.09);
+	    border:none;
 	    border-radius: 3px;
 	    margin-top: 5px;
 	    padding: 5px 20px 0 20px;
 	    font-family: medium-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
 	    font-size: 16px;
 	    line-height:1.6;
+	    &:focus{
+	    	outline:none;
+	    }
     }
     &-inner{
     	display:flex;
@@ -47,10 +49,18 @@
     	justify-content:space-between;
     	min-height: 300px;
     	width:400px;
-    	background: red;
+    	background: white;
   		box-shadow: 0 1px 4px rgba(0,0,0,.04);
   		border: 1px solid rgba(0,0,0,.09);
   		border-radius: 3px;
+  		padding:10px;
+    }
+    &-header{
+    	font-weight: 500;
+    	border-bottom: 1px solid rgba(0,0,0,.09);
+    	padding-bottom:8px;
+    	text-transform: uppercase;
+    	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
     }
     &-footer{
 			display:flex;
@@ -106,3 +116,54 @@
 	}
 }
 
+.popover-list{
+	background-image: linear-gradient(to bottom,rgba(49,49,47,.99),#262625);
+	padding:20px;
+	border-radius:5px;
+	display:flex;
+	li {
+		padding: 0 8px;
+	}
+}
+
+.buttonSet{
+
+}
+.btn-popover{
+		font-size:2rem;
+		width: 30px;
+		height: 30px;
+		display:inline-block;
+		background-color:transparent;
+		cursor: pointer;
+		color:#fff;
+		text-align:center;
+		position:relative;
+		border:none;
+		&:focus{
+	    outline:none;
+	  }
+		&:hover {
+			color:#fff;
+		}
+		i {
+			position:absolute;
+			top:50%;
+			left:50%;
+			transform: translate(-50%,-50%);
+		}
+}
+.arrow-clip{
+	position: absolute;
+	bottom: -10px;
+	left: 50%;
+	clip: rect(10px 20px 20px 0);
+	margin-left: -10px;
+	&-in{
+		display: block;
+    width: 20px;
+    height: 20px;
+    background-image: linear-gradient(to bottom,rgba(49,49,47,.99),#262625);
+    transform: rotate(45deg) scale(.5);
+	}
+}

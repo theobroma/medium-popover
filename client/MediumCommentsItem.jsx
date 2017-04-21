@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 
 export default class MediumCommentsItem extends Component {
 
@@ -8,6 +9,7 @@ export default class MediumCommentsItem extends Component {
       <div className="comment-item">
         <div className="comment-header">
           <div className="comment-author">{username}</div>
+          <div className="comment-date">{moment(createdAt).format('LLL')}</div>
         </div>
         <div className="comment-excerption">{excerption}</div>
         <div className="comment-content">{content}</div>

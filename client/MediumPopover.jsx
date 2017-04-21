@@ -18,6 +18,7 @@ class MediumPopover extends React.Component {
     };
     this.getSelection = this.getSelection.bind(this);
     this.onPublishUI = this.onPublishUI.bind(this);
+    this.formHandleClickOutside = this.formHandleClickOutside.bind(this);
   }
   getSelection () {
     const selectionText = window.getSelection().toString();
@@ -27,6 +28,10 @@ class MediumPopover extends React.Component {
 
   onPublishUI(){
      this.setState({ showCommentForm: false });
+  }
+
+  formHandleClickOutside = evt => {
+    this.setState({ showCommentForm: false });
   }
 
   render() {
@@ -50,7 +55,7 @@ class MediumPopover extends React.Component {
                 <p>
                   Donut lemon drops toffee chupa chups pastry wafer ice cream biscuit. Fruitcake candy canes bonbon biscuit jelly beans.
                 </p>
-                <p className="is-highlight">
+                <p>
                   Donut icing marzipan marzipan chocolate cake jelly beans danish.
                   Gummi bears powder sugar plum gummi bears macaroon liquorice chocolate cake marzipan tootsie roll.
                   Sweet gummies cotton candy carrot cake sweet jelly toffee liquorice oat cake. Danish tiramisu carrot cake cake.
@@ -79,12 +84,25 @@ class MediumPopover extends React.Component {
                 onSelect={() => {this.setState({showPopover: true})}}
                 onDeselect={() => {this.setState({showPopover: false})}}
               >
-                <button>mark</button>
-                <button onClick={this.getSelection}>comment</button>
+              <ul className="popover-list" >
+                <li>
+                  <button className="btn-popover">
+                    <i className="fa fa-pencil"></i>
+                  </button>
+                </li>
+                <li>
+                  <button className="btn-popover" onClick={this.getSelection}>
+                    <i className="fa fa-comment-o"></i>
+                  </button>
+                </li>
+              </ul>
+              <div className="arrow-clip">
+                <span className="arrow-clip-in"></span>
+              </div>
               </SelectionPopover>
               { showCommentForm &&
                 <div className="response-form-wrap">
-                  <ResponseForm onPublishUI={this.onPublishUI}/>
+                  <ResponseForm onPublishUI={this.onPublishUI} formHandleClickOutside = {this.formHandleClickOutside}/>
                 </div>
               }
             </div>

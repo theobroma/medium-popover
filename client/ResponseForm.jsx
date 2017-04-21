@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ContentEditable from "react-contenteditable"
+import onClickOutside from 'react-onclickoutside'
 import api from './api'
 import { onResponseChange,clearCommentData,onPublish } from './actions/mediumActions'
 
@@ -13,12 +14,11 @@ class ResponseForm extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handlePublish = this.handlePublish.bind(this);
   }
-
-  componentDidMount() {
-    if (this.props.autoFocus) {
-      this.contentEditable.findDOMNode().focus();
-    }
+  //don't rename;need for "react-onclickoutside"
+  handleClickOutside = evt => {
+    this.props.formHandleClickOutside(evt);
   }
+
   handleChange(evt){
     this.props.onResponseChange(evt.target.value);
   }
@@ -39,11 +39,11 @@ class ResponseForm extends Component {
             Responses
           </div>
           <ContentEditable
-          ref={(c) => this.contentEditable = c}
-          className="response-form-input"
-          html={this.props.medium.response} // innerHTML of the editable div
-          disabled={false}       // use true to disable edition
-          onChange={this.handleChange} // handle innerHTML change
+            autoFocus
+            className="response-form-input"
+            html={this.props.medium.response} // innerHTML of the editable div
+            disabled={false}       // use true to disable edition
+            onChange={this.handleChange} // handle innerHTML change
           />
         </div>
         <div className="response-form-footer">
@@ -60,4 +60,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps,{onResponseChange,clearCommentData,onPublish})(ResponseForm);
+export default connect(mapStateToProps,{onResponseChange,clearCommentData,onPublish})(onClickOutside(ResponseForm));
