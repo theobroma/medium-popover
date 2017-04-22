@@ -11,6 +11,7 @@ class ResponseForm extends Component {
     this.state = {
       html: "<b>Hello</b>"
     };
+    this.focus = () => this.refs.editor.focus();
     this.handleChange = this.handleChange.bind(this);
     this.handlePublish = this.handlePublish.bind(this);
   }
@@ -39,7 +40,7 @@ class ResponseForm extends Component {
             Responses
           </div>
           <ContentEditable
-            autoFocus
+            ref="editor"
             className="response-form-input"
             html={this.props.medium.response} // innerHTML of the editable div
             disabled={false}       // use true to disable edition
