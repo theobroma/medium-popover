@@ -20,6 +20,7 @@
 }
 .is-fadeOut{
 	transform: translateX(-400px);
+	opacity: 1 !important;
 }
 .response-form{
 		&-wrap{
@@ -28,6 +29,7 @@
 			right: -400px;
 			z-index:9999;
   		transition: all .3s ease-out;
+  		opacity: 0;
 		}
 		&-top{
 			position:relative;
@@ -80,6 +82,7 @@
     box-shadow: 0 1px 4px rgba(0,0,0,.04);
     border: 1px solid rgba(0,0,0,.09);
     border-radius: 3px;
+    margin-bottom:3px;
 	}
 	&-author{
 		color: #3E8432;
@@ -111,6 +114,8 @@
 	&-content {
 		font-size: 18px;
     line-height: 1.58;
+    height:100%;
+    margin-bottom:20px;
 	}
 }
 

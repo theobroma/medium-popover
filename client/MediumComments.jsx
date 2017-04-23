@@ -29,7 +29,9 @@ class MediumComments extends Component {
               <a className="button is-warning" onClick={this.handleDelete}>Delete comments</a>
             </div>
             <div className="comment-list column is-12">
-              {this.props.comments.data.map(item => (<MediumCommentsItem key={shortid.generate()} item={item} />))}
+              <div className="columns is-multiline">
+                {this.props.comments.data.reverse().map(item => (<MediumCommentsItem key={shortid.generate()} item={item} />))}
+              </div>
             </div>
           </div>
         </div>
