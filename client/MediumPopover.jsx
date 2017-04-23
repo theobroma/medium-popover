@@ -81,9 +81,6 @@ class MediumPopover extends React.Component {
     return (
       <div>
         <section className="section">
-        {/*<div className={classnames('response-form-wrap', { 'is-hide': !this.state.showCommentForm })} >
-            <ResponseForm onPublishUI={this.onPublishUI}/>
-          </div>*/}
           <div className="container">
             <div className="columns is-multiline">
               <div  data-selectable className="selectable-text column is-12" contentEditable={this.state.contentEditableState}>
@@ -110,11 +107,9 @@ class MediumPopover extends React.Component {
                 <span className="arrow-clip-in"></span>
               </div>
               </SelectionPopover>
-              { showCommentForm &&
-                <div className="response-form-wrap">
-                  <ResponseForm onPublishUI={this.onPublishUI} formHandleClickOutside = {this.formHandleClickOutside}/>
-                </div>
-              }
+              <div className={classnames('response-form-wrap', { 'is-fadeOut': this.state.showCommentForm })}>
+                <ResponseForm onPublishUI={this.onPublishUI} formHandleClickOutside = {this.formHandleClickOutside}/>
+              </div>
             </div>
           </div>
         </section>

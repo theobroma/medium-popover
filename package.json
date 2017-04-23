@@ -60,6 +60,7 @@
     "react-addons-create-fragment": "^15.4.2",
     "react-contenteditable": "^2.0.2",
     "react-dom": "^15.4.1",
+    "react-motion": "^0.4.8",
     "react-onclickoutside": "^5.11.1",
     "react-paginate": "^4.1.1",
     "react-quill": "^1.0.0-rc-1",
