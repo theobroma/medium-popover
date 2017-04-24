@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { apiPrefix } from '../../etc/config.json';
-import { SET_RESPONSE,SET_SELECTION,CLEAR_DATA,ADD_COMMENT,FETCHING_DATA,GET_COMMENTS,DELETE_COMMENTS } from '../actions/types';
+import { SET_RESPONSE,SET_SELECTION,CLEAR_DATA,ADD_COMMENT,GET_COMMENTS,DELETE_COMMENTS } from '../actions/types';
 
 export function onResponseChange(text) {
   return dispatch => dispatch({
